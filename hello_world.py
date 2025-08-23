@@ -38,6 +38,4 @@ message = f"Hello, {names[0]} and {names[1]}!"
 print(message)  
 
 
-# 添加新的测试内容
-names.append("David")  # 添加新名字
-print(f"Updated names list: {names}")
+
