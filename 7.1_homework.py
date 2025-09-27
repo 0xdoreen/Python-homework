@@ -40,7 +40,7 @@ while True:
     else:
         price = 15
     print(f"您好，您的票价是 {price} 美元。")
-"""
+
 
 #后面不再打印题目内容，只写题目编号。因为 VS code 会自动补全所有的代码。
 #加油吧，少年！
@@ -53,5 +53,78 @@ while topping.lower() != 'quit':  # 使用条件测试来结束循环
     if topping.lower() != 'quit':  # 避免在输入 'quit' 时打印消息
         print(f"好的，我们会在您的比萨中添加 {topping}。")  
 
-        
+    
 
+# 7.6 使用 Break 完成 7.4
+prompt = "请输入一种比萨配料（输入 'quit' 结束）：" 
+while True:  # P108 While true 打头的循环，将是无限循环，True 不需要提前赋值 ，后面要加 冒号
+    topping = input(prompt)
+    if topping.lower() == 'quit':  # 提供退出循环的途径
+        break
+    print(f"好的，我们会在您的比萨中添加 {topping}。")
+
+
+# 使用 active  完成 7.5
+
+active = True  # 控制循环的变量
+while active:
+    age = input("请输入您的年龄（输入 'quit' 结束）：")
+    if age.lower() == 'quit':  # 提供退出循环的途径
+        active = False  # 设置变量为 False 以结束循环
+        continue  # 跳过后续代码，直接进入下一次循环
+    age = int(age)  # 将输入的年龄转换为整数
+    if age < 3:
+        price = 0
+    elif 3 <= age <= 12:
+        price = 10
+    else:
+        price = 15
+    print(f"您好，您的票价是 {price} 美元。")
+
+
+#7.7 无限循环 让程序进入无限循环状态。为此，可以将条件测试设置为始终为 True 的值，例如 while True:。在循环中，打印一条消息并提供退出循环的途径（如键盘中断）。    
+
+while True:
+    print("这是一个无限循环。按 Ctrl+C 终止循环。") # 按Ctrl+C 可以终止程序运行
+
+
+# 7.8
+
+sandwichs = ['火腿三明治', '鸡肉三明治', '牛肉三明治']  
+finished_sandwichs = []
+while sandwichs:  # 当列表不为空时继续循环
+    current_sandwich = sandwichs.pop()  # 从列表末尾取出一个三明治
+    print(f"I made your {current_sandwich}.")
+    finished_sandwichs.append(current_sandwich)  # 将制作好的三明治添加到另一个列表中
+
+print(f"I have made the three sandwichs: {finished_sandwichs}.")  # 打印所有制作好的三明治
+
+
+# 7.9
+
+sandwichs = ['火腿三明治', '鸡肉三明治', '牛肉三明治']  
+print("对不起，pastrami 三明治卖完了。")
+finished_sandwichs = []
+while 'pastrami' in sandwichs:  # 检查列表中是否有 'pastrami'
+    sandwichs.remove('pastrami')  # 移除所有的 'pastrami'   
+while sandwichs:  # 当列表不为空时继续循环
+    current_sandwich = sandwichs.pop()  # 从列表末尾取出一个三明治
+    print(f"I made your {current_sandwich}.")
+    finished_sandwichs.append(current_sandwich)  # 将制作好的三明治添加到另一个列表中
+print(f"I have made the three sandwichs: {finished_sandwichs}.")  # 打印所有制作好的三明治
+
+""" 
+
+#7.10
+responses = {}
+polling_active = True
+while polling_active:
+    name = input("请输入您的名字：")
+    response = input("如果您可以访问任何地方，您想去哪里旅行？")
+    responses[name] = response  # 将名字和回答存储在字典中
+    repeat = input("是否有其他人想参加调查？(yes/no)：")
+    if repeat.lower() == 'no':
+        polling_active = False  # 结束循环
+print("\n--- 调查结果 ---")
+for name, response in responses.items():
+    print(f"{name} 想去 {response} 旅行。") 
